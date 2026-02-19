@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GreetController;
 
+// Simple text route required by the lab instructions
+Route::get('/hello-laravel', function () {
+    return 'Hello, Laravel!';
+});
+
 // Splash page (landing page)
 Route::get('/', [GreetController::class, 'show']);
 
@@ -35,7 +40,7 @@ Route::get('/greet/{name}', function ($name) {
     </head>
     <body>
         <div class="card">
-            <h1>Nihao {$name}!</h1>
+            <h1>Hello, {$name}!</h1>
             <p>Welcome thus Laravel app.</p>
             <div class="button-group">
                 <a href="/" class="btn back-btn">Back to Home</a>
@@ -71,7 +76,7 @@ Route::get('/about', function () {
     <body>
         <div class="card">
             <h1>About Us</h1>
-            <p>This is a Laravel learning project for routing and controllers. Explorring fundamentals of building web applications with Laravel framework.</p>
+            <p>This is activity has context of Simple Routing to Views for the CIT18 MASTERY IN WEB TECHNOLOGY subject.</p>
             <a href="/" class="btn back-btn">Back to Home</a>
         </div>
     </body>
