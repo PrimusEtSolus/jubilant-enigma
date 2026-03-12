@@ -117,3 +117,7 @@ Route::get('/contact', function () {
     HTML;
     return $html;
 });
+
+// Task resource route
+use App\Http\Controllers\TaskController;
+Route::resource('tasks', TaskController::class);

@@ -111,6 +111,7 @@
             <a href="/greet/Developer" class="btn btn-primary">Greet Developer</a>
             <a href="/about" class="btn btn-secondary">About Page</a>
             <a href="/contact" class="btn btn-tertiary">Contact Page</a>
+            <a href="/tasks" class="btn btn-secondary">Tasks CRUD</a>
             <a href="/" class="btn btn-back">Back to Splash</a>
         </div>
     </div>
