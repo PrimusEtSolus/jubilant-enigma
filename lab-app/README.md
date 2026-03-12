@@ -57,3 +57,74 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## How to Run This Application
+
+Follow these steps to get the application running properly:
+
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js and NPM
+- SQLite (or another supported database)
+
+### Setup Instructions
+
+1. **Install PHP Dependencies**
+   ```bash
+   composer install
+   ```
+
+2. **Create Environment File**
+   ```bash
+   cp .env.example .env
+   ```
+
+3. **Generate Application Key**
+   ```bash
+   php artisan key:generate
+   ```
+
+4. **Create Database File**
+   ```bash
+   # For SQLite (default)
+   New-Item -ItemType File -Force -Path "database/database.sqlite"
+   ```
+
+5. **Run Database Migrations**
+   ```bash
+   php artisan migrate
+   ```
+
+6. **Install Frontend Dependencies**
+   ```bash
+   npm install
+   ```
+
+7. **Start the Development Server**
+   ```bash
+   php artisan serve
+   ```
+
+8. **Access the Application**
+   Open your browser and navigate to: `http://127.0.0.1:8000`
+
+### Common Issues & Solutions
+
+- **"No such file or directory: vendor/autoload.php"**: Run `composer install`
+- **"Database file does not exist"**: Create the SQLite database file as shown in step 4
+- **"no such table: sessions"**: Run `php artisan migrate` to create all required tables
+- **Port already in use**: Use `php artisan serve --port=8001` to run on a different port
+
+### Development Workflow
+
+For development with hot reloading:
+```bash
+# Terminal 1: Start PHP server
+php artisan serve
+
+# Terminal 2: Start Vite development server
+npm run dev
+```
+
+The application will automatically reload when you make changes to your code.
