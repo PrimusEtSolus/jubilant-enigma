@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Task</title>
+    <title>Create Task</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 2rem; background: #f5f5f5; }
         .container { max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; }
@@ -24,24 +24,23 @@
 </head>
 <body>
     <div class="container">
-        <h1>Edit Task</h1>
-        <form action="{{ route('tasks.update', $task->id) }}" method="POST">
+        <h1>Create New Task</h1>
+        <form action="{{ route('tasks.store') }}" method="POST">
             @csrf
-            @method('PUT')
             <div class="form-group">
                 <label for="title">Title *</label>
-                <input type="text" id="title" name="title" value="{{ $task->title }}" required>
+                <input type="text" id="title" name="title" placeholder="Enter task title" value="{{ old('title') }}" required>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea id="description" name="description">{{ $task->description }}</textarea>
+                <textarea id="description" name="description" placeholder="Enter task description">{{ old('description') }}</textarea>
             </div>
             <div class="form-group checkbox-group">
-                <input type="checkbox" id="is_completed" name="is_completed" value="1" {{ $task->is_completed ? 'checked' : '' }}>
+                <input type="checkbox" id="is_completed" name="is_completed" value="1">
                 <label for="is_completed" style="margin: 0;">Mark as Completed</label>
             </div>
             <div class="button-group">
-                <button type="submit" class="btn">Update Task</button>
+                <button type="submit" class="btn">Create Task</button>
                 <a href="{{ route('tasks.index') }}" class="btn btn-cancel">Cancel</a>
             </div>
         </form>

@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::orderBy('created_at', 'desc')->get();
+        $tasks = Task::all();
         return view('tasks.index', compact('tasks'));
     }
 
@@ -20,41 +20,42 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'is_completed' => 'sometimes|boolean',
-        ]);
-
-        Task::create($data);
-        return redirect()->route('tasks.index');
+        $record = $request->all();
+        $task = new Task;
+        $task->title = $record['title'];
+        $task->description = $record['description'] ?? '';
+        $task->is_completed = isset($record['is_completed']) ? 1 : 0;
+        $task->save();
+        return redirect('/tasks')->with('success', 'Task created successfully');
     }
 
-    public function show(Task $task)
+    public function show($id)
     {
+        $task = Task::find($id);
         return view('tasks.show', compact('task'));
     }
 
-    public function edit(Task $task)
+    public function edit($id)
     {
+        $task = Task::find($id);
         return view('tasks.edit', compact('task'));
     }
 
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'is_completed' => 'sometimes|boolean',
-        ]);
-
-        $task->update($data);
-        return redirect()->route('tasks.index');
+        $record = $request->all();
+        $task = Task::find($id);
+        $task->title = $record['title'];
+        $task->description = $record['description'] ?? '';
+        $task->is_completed = isset($record['is_completed']) ? 1 : 0;
+        $task->save();
+        return redirect('/tasks')->with('success', 'Task updated successfully');
     }
 
-    public function destroy(Task $task)
+    public function destroy($id)
     {
+        $task = Task::find($id);
         $task->delete();
-        return redirect()->route('tasks.index');
+        return redirect('/tasks')->with('success', 'Task deleted successfully');
     }
 }
