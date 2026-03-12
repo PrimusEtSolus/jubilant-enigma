@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->trust(
+            proxies: '*',
+            headers: 'HEADER_X_FORWARDED_FOR|HEADER_X_FORWARDED_HOST|HEADER_X_FORWARDED_PORT|HEADER_X_FORWARDED_PROTO',
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
