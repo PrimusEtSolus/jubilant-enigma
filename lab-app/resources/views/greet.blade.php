@@ -6,20 +6,18 @@
     <title>Laravel App - Home</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 font-sans">
+<body class="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-700 to-gray-900 font-sans">
 
-    <div class="bg-white p-16 rounded-2xl shadow-2xl text-center max-w-md w-full">
-        <h1 class="text-4xl font-bold text-indigo-500 mb-4">🚀 Laravel App</h1>
-        <p class="text-xl text-gray-500 mb-8 font-light">Laravel Application by PrimustEtSolus</p>
-        <p class="text-gray-500 mb-12 leading-relaxed text-base">
-            This is a Laravel learning project demonstrating routing, controllers, and views.
-            Explore this application and see fundamentals of Laravel.
+    <div class="bg-gray-100 p-16 rounded-2xl shadow-2xl text-center max-w-md w-full">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">🚀 Laravel App</h1>
+        <p class="text-xl text-gray-600 mb-8 font-light">Laravel Application by Istiane</p>
+
         </p>
         <div class="flex flex-col gap-4">
-            <a href="/tasks" class="inline-block bg-indigo-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-purple-600 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
+            <a href="/tasks" class="inline-block bg-gray-700 text-white py-3 px-8 rounded-lg font-semibold hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
                 Go to Tasks Index
             </a>
-            <a href="/hello" class="inline-block bg-indigo-500 text-white py-3 px-8 rounded-lg font-semibold hover:bg-purple-600 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
+            <a href="/hello" class="inline-block bg-gray-600 text-white py-3 px-8 rounded-lg font-semibold hover:bg-gray-700 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300">
                 Explore Routes
             </a>
         </div>
