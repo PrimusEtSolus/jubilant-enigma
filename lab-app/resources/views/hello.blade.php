@@ -6,20 +6,23 @@
     <title>Routes & Navigation</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-700 to-gray-900 font-sans">
+<body class="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black font-serif">
 
-    <div class="bg-gray-100 p-12 rounded-2xl shadow-2xl text-center max-w-md w-full">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">🎯 Available Routes</h1>
-        <p class="text-gray-600 mb-8">Click any button to explore different routes</p>
+    <div class="bg-gray-900 p-12 rounded-none border-4 border-double border-gray-600 shadow-[0_0_50px_rgba(0,0,0,0.8)] text-center max-w-md w-full relative">
+        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700"></div>
+        <div class="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-gray-700 via-gray-500 to-gray-700"></div>
+        
+        <h1 class="text-4xl font-bold text-gray-100 mb-4 tracking-wide">🎯 Available Routes</h1>
+        <p class="text-gray-400 mb-8 italic">Click any button to explore different routes</p>
 
-        <div class="flex flex-col gap-3">
-            <a href="/greet/Laravel" class="inline-block bg-gray-700 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-800 hover:-translate-x-1 transition-all duration-300">
+        <div class="flex flex-col gap-4">
+            <a href="/greet/Laravel" class="inline-block bg-gradient-to-r from-gray-700 to-gray-800 text-gray-100 py-4 px-8 border-2 border-gray-600 font-semibold hover:from-gray-600 hover:to-gray-700 hover:border-gray-500 hover:shadow-[0_0_20px_rgba(100,100,100,0.5)] transition-all duration-300 tracking-wider uppercase">
                 Greet Laravel
             </a>
-            <a href="/tasks" class="inline-block bg-gray-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-700 hover:-translate-x-1 transition-all duration-300">
+            <a href="/tasks" class="inline-block bg-gradient-to-r from-gray-700 to-gray-800 text-gray-100 py-4 px-8 border-2 border-gray-600 font-semibold hover:from-gray-600 hover:to-gray-700 hover:border-gray-500 hover:shadow-[0_0_20px_rgba(100,100,100,0.5)] transition-all duration-300 tracking-wider uppercase">
                 Tasks CRUD
             </a>
-            <a href="/" class="inline-block bg-gray-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-gray-600 hover:-translate-x-1 transition-all duration-300 mt-4">
+            <a href="/" class="inline-block bg-gradient-to-r from-gray-600 to-gray-700 text-gray-100 py-4 px-8 border-2 border-gray-500 font-semibold hover:from-gray-500 hover:to-gray-600 hover:border-gray-400 hover:shadow-[0_0_20px_rgba(100,100,100,0.5)] transition-all duration-300 tracking-wider uppercase mt-6">
                 Back to Splash
             </a>
         </div>
