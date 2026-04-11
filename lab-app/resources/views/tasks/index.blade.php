@@ -4,60 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 2rem; background: #f5f5f5; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 2rem; border-radius: 8px; }
-        h1 { color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
-        th { background: #4F46E5; color: white; padding: 12px; text-align: left; }
-        td { padding: 12px; border-bottom: 1px solid #ddd; }
-        tr:hover { background: #f9f9f9; }
-        a { color: #4F46E5; text-decoration: none; margin-right: 10px; }
-        a:hover { text-decoration: underline; }
-        .btn { background: #4F46E5; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
-        .btn:hover { background: #4338CA; }
-        .btn-danger { background: #EF4444; }
-        .btn-danger:hover { background: #DC2626; }
-        .success { color: #10B981; background: #d1fae5; padding: 10px; border-radius: 4px; margin-bottom: 1rem; }
-        .header { display: flex; justify-content: space-between; align-items: center; }
-        .btn-new { display: inline-block; background: #4F46E5; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; }
-        .btn-new:hover { background: #4338CA; }
-    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Tasks</h1>
-            <a href="{{ route('tasks.create') }}" class="btn-new">+ New Task</a>
+<body class="font-sans m-8 bg-gray-100">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-gray-800">Tasks</h1>
+            <a href="{{ route('tasks.create') }}" class="bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 transition">+ New Task</a>
         </div>
 
         @if(session('success'))
-            <div class="success">{{ session('success') }}</div>
+            <div class="text-green-600 bg-green-100 p-3 rounded mb-4">{{ session('success') }}</div>
         @endif
 
         @if(count($tasks) > 0)
-            <table>
+            <table class="w-full border-collapse mt-6">
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th class="bg-indigo-600 text-white p-3 text-left">Title</th>
+                        <th class="bg-indigo-600 text-white p-3 text-left">Description</th>
+                        <th class="bg-indigo-600 text-white p-3 text-left">Status</th>
+                        <th class="bg-indigo-600 text-white p-3 text-left">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($tasks as $task)
-                        <tr>
-                            <td><strong>{{ $task->title }}</strong></td>
-                            <td>{{ substr($task->description, 0, 50) }}</td>
-                            <td>{{ $task->is_completed ? '✓ Done' : '○ Pending' }}</td>
-                            <td>
-                                <a href="{{ route('tasks.show', $task->id) }}">View</a>
-                                <a href="{{ route('tasks.edit', $task->id) }}">Edit</a>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 border-b border-gray-200"><strong>{{ $task->title }}</strong></td>
+                            <td class="p-3 border-b border-gray-200">{{ substr($task->description, 0, 50) }}</td>
+                            <td class="p-3 border-b border-gray-200">{{ $task->is_completed ? '✓ Done' : '○ Pending' }}</td>
+                            <td class="p-3 border-b border-gray-200">
+                                <a href="{{ route('tasks.show', $task->id) }}" class="text-indigo-600 hover:underline mr-2">View</a>
+                                <a href="{{ route('tasks.edit', $task->id) }}" class="text-indigo-600 hover:underline mr-2">Edit</a>
                                 <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this task?')">Delete</button>
+                                    <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition" onclick="return confirm('Delete this task?')">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -65,10 +47,10 @@
                 </tbody>
             </table>
         @else
-            <p style="text-align: center; color: #999; margin-top: 2rem;">No tasks yet. <a href="{{ route('tasks.create') }}">Create one</a></p>
+            <p class="text-center text-gray-400 mt-8">No tasks yet. <a href="{{ route('tasks.create') }}" class="text-indigo-600 hover:underline">Create one</a></p>
         @endif
 
-        <p style="margin-top: 2rem;"><a href="/hello">← Back to Home</a></p>
+        <p class="mt-8"><a href="/" class="text-indigo-600 hover:underline">← Back to Home</a></p>
     </div>
 </body>
 </html>
